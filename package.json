@@ -1,0 +1,35 @@
+{
+  "name": "biodata_simulator_api",
+  "version": "1.0.0",
+  "description": "API server to generate emulated bio signals and healthcare data",
+  "main": "server.js",
+  "scripts": {
+    "test": "server testing",
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mobeloper/biodata_simulator_api.git"
+  },
+  "keywords": [
+    "healthcare",
+    "data",
+    "api",
+    "simulator"
+  ],
+  "author": "Eric Michel",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/mobeloper/biodata_simulator_api/issues"
+  },
+  "homepage": "https://github.com/mobeloper/biodata_simulator_api#readme",
+  "dependencies": {
+    "body-parser": "^1.20.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "mongoose": "^6.8.0",
+    "nodemon": "^2.0.20",
+    "save": "^2.9.0"
+  }
+}

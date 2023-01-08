@@ -1,30 +1,3 @@
-Skip to content
-Search or jump to…
-Pull requests
-Issues
-Codespaces
-Marketplace
-Explore
- 
-@mobeloper 
-Suriyaprakashhh
-/
-HealthMonitor-OpenAPI
-Public
-Code
-Issues
-Pull requests
-Actions
-Projects
-Security
-Insights
-HealthMonitor-OpenAPI/constants.js /
-@Suriyaprakashhh
-Suriyaprakashhh API code
-Latest commit 4fad6e2 on Feb 21, 2021
- History
- 1 contributor
-41 lines (24 sloc)  836 Bytes
 
 // range to generate mock data
 
