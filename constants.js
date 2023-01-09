@@ -2,7 +2,7 @@
 // range to generate mock data
 
 //Normal-> 60 - 100
-const heartBeatMin = 40
+const heartBeatMin = 30 //40
 const heartBeatMax =120
 
 // Normal -> 360 - 600 minutes
