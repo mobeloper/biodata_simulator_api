@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/mobeloper/biodata_simulator_api#readme",
   "dependencies": {
+    "@metriport/api": "^1.0.0",
     "body-parser": "^1.20.1",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",

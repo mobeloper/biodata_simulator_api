@@ -1,10 +1,16 @@
+// import * as dotenv from "dotenv";
+// dotenv.config();
+// // Keep dotenv import and config before everything else
+
+// import cors from "cors";
+// import express, { Application, Request, Response } from "express";
 
 const express = require("express");
 const cors = require("cors");
-const ranges=require('./constants')
-
 
 const app = express();
+//const app: Application = express();
+
 
 global.__basedir = __dirname;
 
@@ -37,23 +43,10 @@ app.use(express.urlencoded({ extended: true }));
 
 
 app.get("/", (req, res) => {
-
-  const data={
-    heartBeat:ranges.generate(ranges.heartBeatMin,ranges.heartBeatMax),
-    sleep:ranges.generate(ranges.sleepDurationMin,ranges.sleepDurationMax),
-    steps:ranges.generate(ranges.stepsWalkedMin,ranges.stepsWalkedMax),
-    glucose:ranges.generate(ranges.glucoseLevelMin,ranges.glucoseLevelMax),
-    bp:ranges.generate(ranges.bpMin,ranges.bpMax),
-    oxygen:ranges.generate(ranges.oxygenSaturationMin,ranges.oxygenSaturationMax)
-
-
-  }
-
-  res.json(data)
-
+  res.json({ message: "Simpl Healthcare Health and Medical Data Simulator" });
 });
 
-//require("./app/routes/api.routes")(app);
+require("./routes/api.routes")(app);
 
 const PORT = process.env.PORT || 8080;
 

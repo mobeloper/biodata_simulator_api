@@ -2,8 +2,9 @@
 // Normal ranges to generate mock data
 
 //Normal-> 60 - 100
-const heartBeatMin = 30 //40
-const heartBeatMax =120
+const heartBeatAvg = 70
+const heartBeatMin = 40
+const heartBeatMax = 220
 
 // Normal -> 360 - 600 minutes
 const sleepDurationMin = 240
@@ -32,4 +33,4 @@ function generate(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min); 
   }
 
-module.exports = { heartBeatMin,heartBeatMax,sleepDurationMin,sleepDurationMax,stepsWalkedMin,stepsWalkedMax,glucoseLevelMin,glucoseLevelMax,bpMin,bpMax,oxygenSaturationMin,oxygenSaturationMax,generate}
+module.exports = { heartBeatAvg,heartBeatMin,heartBeatMax,sleepDurationMin,sleepDurationMax,stepsWalkedMin,stepsWalkedMax,glucoseLevelMin,glucoseLevelMax,bpMin,bpMax,oxygenSaturationMin,oxygenSaturationMax,generate}
