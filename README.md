@@ -4,7 +4,7 @@ Open REST API server to generate emulated bio signals and healthcare data based 
 ## Now accepting code contributions!! 😊✅
 
 
-Project Tree
+###Project Tree
 Here are the main files in the project:
 
 server/
@@ -14,9 +14,12 @@ routes
 record.js
 server.js
 config.env
+
 app/listings/
+
 public/
 src/
+
 App.js
 App.css
 index.js
