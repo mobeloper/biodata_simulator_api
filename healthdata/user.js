@@ -1,4 +1,4 @@
-const userInfo =  {
+let userInfo =  {
   "email": "nice@email.com",
   "sex": "female",
   "date_of_birth": "1963-02-08",
@@ -9,4 +9,5 @@ const userInfo =  {
   "country": "MX"
 }
 
-module.exports= {userInfo}
+//module.exports= {userInfo}
+export default userInfo = {userInfo};

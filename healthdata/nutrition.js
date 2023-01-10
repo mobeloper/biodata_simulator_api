@@ -1,5 +1,5 @@
 
-const nutrition = [
+let nutrition = [
     {
       "metadata": {
         "date": "2022-12-21",
@@ -71,4 +71,5 @@ const nutrition = [
     }
 ]
 
-module.exports = {nutrition}
+//module.exports = {nutrition}
+export default nutrition = {nutrition}

@@ -1,4 +1,4 @@
-const sleep = [
+let sleep = [
     {
       "metadata": {
         "date": "2022-12-21",
@@ -62,4 +62,5 @@ const sleep = [
     }
   ]
 
-  module.exports = {sleep}
+  //module.exports = {sleep}
+  export default sleep = {sleep}

@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "API server to generate emulated bio signals and healthcare data",
   "main": "server.js",
+  "type": "module",
   "scripts": {
     "test": "server testing",
     "start": "nodemon server.js"
@@ -29,6 +30,7 @@
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
+    "express-promise-router": "^4.1.1",
     "mongoose": "^6.8.0",
     "nodemon": "^2.0.20",
     "save": "^2.9.0"

@@ -1,5 +1,7 @@
+import ranges from "../utils/constants.js"
+import generate from "../utils/generate.js";
 
-const ranges = require('../constants');
+//const ranges = require('../constants');
 
 // heartBeat:ranges.generate(ranges.heartBeatMin,ranges.heartBeatMax),
 // steps:ranges.generate(ranges.stepsWalkedMin,ranges.stepsWalkedMax),
@@ -10,7 +12,7 @@ const ranges = require('../constants');
 
 //"date": "2022-12-21",
 
-const activity = 
+let activity = 
 [
   {
       "metadata": {
@@ -27,7 +29,7 @@ const activity =
             "samples_bpm": [
               {
                 "time": new Date().toISOString(),
-                "value": ranges.generate(ranges.heartBeatMin,ranges.heartBeatMax),
+                "value": generate(ranges.heartBeatMin,ranges.heartBeatMax),
               }
             ]
           },
@@ -211,4 +213,5 @@ const activity =
 ];  
 
 
-module.exports = {activity}
+//module.exports = {activity}
+export default activity = {activity}

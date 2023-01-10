@@ -1,4 +1,4 @@
-const biometrics = [
+let biometrics = [
     {
         "metadata": {
         "date": "2022-12-21",
@@ -94,4 +94,5 @@ const biometrics = [
     }
 ]
 
-module.exports = {biometrics}
+//module.exports = {biometrics}
+export default biometrics = {biometrics}

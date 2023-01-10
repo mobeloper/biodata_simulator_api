@@ -1,7 +1,11 @@
 
-const ranges = require('../constants');
 
-const bodyParameters = [
+import ranges from "../utils/constants.js"
+//const ranges = require('../constants');
+
+
+//const bodyParameters = [
+let body = [
   {
     "metadata": {
       "date": new Date().toISOString(),
@@ -16,4 +20,5 @@ const bodyParameters = [
   }
 ]
 
-module.exports = {bodyParameters}
+//module.exports = {bodyParameters}
+export default body = {body}
