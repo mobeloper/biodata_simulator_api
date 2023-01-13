@@ -15,21 +15,26 @@
 
 import Router from "express-promise-router";
 
-import {allDummy, getActivity, getSleep} from "../controllers/health.controller.js"
+import {allDummy, authLogin, getActivity, getSleep, receiveHealthDataFromMetriport} from "../controllers/health.controller.js"
 
 const router = Router();
 
 export default app => {
 //export default (app: Application) => {
 
-    app.use("/health/mock/v1",allDummy);
-    app.use("/health/activity/v1",getActivity);
-    app.use("/health/sleep/v1",getSleep);
+    // app.use("/health/mock/v1",allDummy);
+    // app.use("/health/activity/v1",getActivity);
+    // app.use("/health/sleep/v1",getSleep);
 
-    // router.get("/health/all/v1",all);
-    // router.get("/health/activity/v1",getActivity);
+    router.get("/auth/login/v1",authLogin);
+    router.get("/health/mock/v1",allDummy);
+    router.get("/health/activity/v1",getActivity);
+    router.get("/health/sleep/v1",getSleep);
+
+    router.post("/health/metriport/v1", receiveHealthDataFromMetriport);
 
     // //API root path
     // app.use("/api", router);
+    app.use("", router);
 
 };

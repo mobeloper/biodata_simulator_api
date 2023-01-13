@@ -53,6 +53,7 @@ mountRoutes(app);
 //Default route
 app.get("/", (req, res) => {
   res.json({ message: "Simpl Healthcare Health and Medical Data Simulator" });
+
 });
 
 //app.use(errorHandler);

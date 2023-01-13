@@ -72,7 +72,7 @@ export function allDummy(req, res){
 export async function getActivity(req, res){
     try{
 
-        //const appUserId = "dummy.user";
+        //const appUserId = "test.user";
         const appUserId = req.query.uid;
         
         //const metriportUserId = "3fe738a7-1f65-480c-9fd6-b9ef5dabef04";
@@ -95,6 +95,18 @@ export async function getActivity(req, res){
         
 
     }catch (error) {
+        if(!req.query.uid)
+        {
+            res
+        .status(501)
+        .send({message: "uid missing. Try something like... ?uid=test.user"});
+        }else if(!req.query.uid == null)
+        {
+            res
+        .status(501)
+        .send({message: "uid cannot be empty. Try something like... ?uid=test.user"});
+        }
+
         res
         .status(500)
         .send({message: "Wrong document or schema"});
@@ -108,7 +120,7 @@ export async function getSleep(req, res){
         //req.query.uid
         //console.log("user: ",req.query.uid);
 
-        //const appUserId = "dummy.user";
+        //const appUserId = "test.user";
         const appUserId = req.query.uid;
         
         //const metriportUserId = "3fe738a7-1f65-480c-9fd6-b9ef5dabef04";
@@ -133,12 +145,94 @@ export async function getSleep(req, res){
         //res.status(200).send(sleep);
 
     }catch (error) {
+
+        if(!req.query.uid)
+        {
+            res
+        .status(501)
+        .send({message: "uid missing. Try something like... ?uid=test.user"});
+        }else if(!req.query.uid == null)
+        {
+            res
+        .status(501)
+        .send({message: "uid cannot be empty. Try something like... ?uid=test.user"});
+        }
+
         res
         .status(500)
         .send({message: "Wrong document or schema"});
     }
 };
 
-let healthAPI = {allDummy,getActivity,getSleep}
+
+export async function receiveHealthDataFromMetriport(req, res){
+    try{
+
+        // const bodyContent = JSON.stringify(req.body);
+        // const headerContent = JSON.stringify(req.headers);
+
+        // res.status(200).send(`headerContent: ${headerContent} \n\n bodyContent: ${bodyContent}`);
+
+
+        console.log(`BODY: ${JSON.stringify(req.body, undefined, 2)}`);
+
+        //process.env.METRIPORT_WEBHOOKKEY
+
+        if (req.body.ping) {
+          console.log(`Sending 200 | OK + 'pong' body param`);
+          return res.status(200).send({ pong: req.body.ping });
+        }
+        console.log(`Sending 200 | OK`);
+        res.sendStatus(200);
+
+    }catch (error) {
+
+        if(!req.query.uid)
+        {
+            res
+        .status(501)
+        .send({message: "uid missing. Try something like... ?uid=test.user"});
+        }else if(!req.query.uid == null)
+        {
+            res
+        .status(501)
+        .send({message: "uid cannot be empty. Try something like... ?uid=test.user"});
+        }
+
+        res
+        .status(500)
+        .send({message: "Wrong document or schema"});
+    }
+};
+
+
+export async function authLogin(req,res){
+    try{
+        const appUserId = req.query.uid;
+        const metriportUserId = await metriportClient.getMetriportUserId(appUserId);
+        const response = await metriportClient.getConnectToken(metriportUserId);
+
+        res.status(200).send(`Session Token (valid for 10min only): ${response}`);
+
+    }catch(error){
+        if(!req.query.uid)
+        {
+            res
+        .status(501)
+        .send({message: "uid missing. Try something like... ?uid=test.user"});
+        }else if(!req.query.uid == null)
+        {
+            res
+        .status(501)
+        .send({message: "uid cannot be empty. Try something like... ?uid=test.user"});
+        }
+
+        res
+        .status(500)
+        .send({message: "Wrong document or schema"});
+    }
+}
+
+let healthAPI = {allDummy,getActivity,getSleep,receiveHealthDataFromMetriport,authLogin}
 
 export default healthAPI => {healthAPI};
