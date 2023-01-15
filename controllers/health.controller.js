@@ -72,12 +72,15 @@ export function allDummy(req, res){
 export async function getActivity(req, res){
     try{
 
-        //const appUserId = "test.user";
-        const appUserId = req.query.uid;
+        // //const appUserId = "test.user";
+        // const appUserId = req.query.uid;
         
-        //const metriportUserId = "3fe738a7-1f65-480c-9fd6-b9ef5dabef04";
-        const metriportUserId = await metriportClient.getMetriportUserId(appUserId);
-        console.log(metriportUserId);
+        // //const metriportUserId = "3fe738a7-1f65-480c-9fd6-b9ef5dabef04";
+        // const metriportUserId = await metriportClient.getMetriportUserId(appUserId);
+        
+
+        const metriportUserId = req.query.uid;
+        console.log("checking for activity data from user: ",metriportUserId);
 
         let dateNow = new Date().toLocaleString('en-US', {
             timeZone: 'America/Los_Angeles'
@@ -86,13 +89,14 @@ export async function getActivity(req, res){
         console.log(dateNow);
         dateNow = dateNow.substring(0, dateNow.indexOf("T"));
  
-        const activity = await metriportClient.getActivityData(
+        await metriportClient.getActivityData(
             metriportUserId,
             dateNow
-          );
+            ).then((data)=>{
+                res.status(200).send({metriportData:data});
+            });
+    
 
-        res.status(200).send(activity);
-        
 
     }catch (error) {
         if(!req.query.uid)
@@ -116,15 +120,19 @@ export async function getActivity(req, res){
 export async function getSleep(req, res){
     try{
 
-        //req.params.uid
-        //req.query.uid
-        //console.log("user: ",req.query.uid);
+        // //req.params.uid
+        // //req.query.uid
+        // //console.log("user: ",req.query.uid);
 
-        //const appUserId = "test.user";
-        const appUserId = req.query.uid;
+        // //const appUserId = "test.user";
+        // const appUserId = req.query.uid;
         
-        //const metriportUserId = "3fe738a7-1f65-480c-9fd6-b9ef5dabef04";
-        const metriportUserId = await metriportClient.getMetriportUserId(appUserId);
+        // //const metriportUserId = "3fe738a7-1f65-480c-9fd6-b9ef5dabef04";
+        // const metriportUserId = await metriportClient.getMetriportUserId(appUserId);
+
+        
+        const metriportUserId = req.query.uid;
+
         console.log(metriportUserId);
 
         let dateNow = new Date().toLocaleString('en-US', {
@@ -174,7 +182,7 @@ export async function receiveHealthDataFromMetriport(req, res){
         // res.status(200).send(`headerContent: ${headerContent} \n\n bodyContent: ${bodyContent}`);
 
 
-        console.log(`BODY: ${JSON.stringify(req.body, undefined, 2)}`);
+        console.log(`Received from Metriport... BODY: ${JSON.stringify(req.body, undefined, 2)}`);
 
         //process.env.METRIPORT_WEBHOOKKEY
 
@@ -212,7 +220,7 @@ export async function authLogin(req,res){
         const metriportUserId = await metriportClient.getMetriportUserId(appUserId);
         const response = await metriportClient.getConnectToken(metriportUserId);
 
-        res.status(200).send(`Session Token (valid for 10min only): ${response}`);
+        res.status(200).send(`MetriportUserId=${metriportUserId}\n\nSession Token (valid for 10min only): ${response}`);
 
     }catch(error){
         if(!req.query.uid)
@@ -233,6 +241,44 @@ export async function authLogin(req,res){
     }
 }
 
-let healthAPI = {allDummy,getActivity,getSleep,receiveHealthDataFromMetriport,authLogin}
+export async function authUserInfo(req,res){
+    try{
+        const metriportUserId = req.query.uid;
+
+        console.log(metriportUserId);
+
+        let dateNow = new Date().toLocaleString('en-US', {
+            timeZone: 'America/Los_Angeles'
+        });
+        dateNow = new Date(dateNow).toISOString();
+        console.log(dateNow);
+        dateNow = dateNow.substring(0, dateNow.indexOf("T"));
+ 
+        await metriportClient.getUserData(
+        metriportUserId,
+        dateNow
+        ).then((data)=>{
+            res.status(200).send({userData: data});
+        });
+    }catch(error){
+        if(!req.query.uid)
+        {
+            res
+        .status(501)
+        .send({message: "uid missing. Try something like... ?uid=test.user"});
+        }else if(!req.query.uid == null)
+        {
+            res
+        .status(501)
+        .send({message: "uid cannot be empty. Try something like... ?uid=test.user"});
+        }
+
+        res
+        .status(500)
+        .send({message: "Wrong document or schema"});
+    }
+}
+
+let healthAPI = {allDummy,getActivity,getSleep,receiveHealthDataFromMetriport,authLogin,authUserInfo}
 
 export default healthAPI => {healthAPI};
