@@ -1,4 +1,4 @@
-module.exports = {
+export default module = {
     apps: [
       {
         name: 'server',
