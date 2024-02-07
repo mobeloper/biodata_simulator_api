@@ -29,7 +29,7 @@ index.js
 Please reference if you use BioData Simulator:
 
 ```
-@software{Michel_BiodataSimulator_2022,
+@software{Michel_BiodataSimulator_2022},
 author = {Michel, Eric},
 month = {02},
 title = {{BiodataSimulator}},
