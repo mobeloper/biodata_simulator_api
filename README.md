@@ -35,5 +35,4 @@ month = {02},
 title = {{BiodataSimulator}},
 url = {https://github.com/mobeloper/biodata_simulator_api},
 year = {2022}
-}
 ```
