@@ -24,3 +24,16 @@ App.js
 App.css
 index.js
 
+## 📖 Citation
+
+Please reference if you use BioData Simulator:
+
+```
+@software{Michel_BiodataSimulator_2022,
+author = {Michel, Eric},
+month = {02},
+title = {{BiodataSimulator}},
+url = {https://github.com/mobeloper/biodata_simulator_api},
+year = {2022}
+}
+```
