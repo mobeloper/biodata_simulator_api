@@ -70,7 +70,7 @@ export async function getActivity(req, res){
         // //const appUserId = "test.user";
         // const appUserId = req.query.uid;
         
-        // //const metriportUserId = "3fe738a7-1f65-480c-9fd6-b9ef5dabef04";
+        // //const metriportUserId = "xxxxx";
         // const metriportUserId = await metriportClient.getMetriportUserId(appUserId);
         
 
