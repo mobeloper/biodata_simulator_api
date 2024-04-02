@@ -29,6 +29,4 @@ const oxygenSaturationMax = 98;
 
 let ranges = { heartBeatAvg,heartBeatMin,heartBeatMax,sleepDurationMin,sleepDurationMax,stepsWalkedMin,stepsWalkedMax,glucoseLevelMin,glucoseLevelMax,bpMin,bpMax,oxygenSaturationMin,oxygenSaturationMax};
 
-
-//module.exports = { heartBeatAvg,heartBeatMin,heartBeatMax,sleepDurationMin,sleepDurationMax,stepsWalkedMin,stepsWalkedMax,glucoseLevelMin,glucoseLevelMax,bpMin,bpMax,oxygenSaturationMin,oxygenSaturationMax,generate}
 export default ranges;
