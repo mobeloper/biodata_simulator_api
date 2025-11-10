@@ -1,5 +1,5 @@
 # API for Biodata Simulator of Health Monitoring Devices
-Open REST API server to generate emulated bio signals and healthcare data based on random data constrained by realistic health parameters obtained from different wearable health monitoring devices.
+Open REST API server to generate emulated bio signals and healthcare data based on random data constrained by realistic health parameters obtained from different wearable health monitoring devices
 
 ## Now Accepting code contributions!! 😊✅
 
